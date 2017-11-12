@@ -1,3 +1,6 @@
+[![Build Status][badge-travis]][travis]
+[![Test Coverage][badge-coverage]][coverage]
+[![license][badge-license]][license]
 
 # kafka-observable
 
@@ -182,4 +185,14 @@ the interface established by the code in `lib/client`.
 #### Why an adapter? 
 
 I currently use an internal kafka client at Netflix with an interface very similar to this adapter 
-and I wanted it to work out-of-the-box. 
+and I wanted it to work out-of-the-box.
+
+## License: [MIT](https://github.com/ghermeto/kafka-observable/blob/master/LICENSE)
+
+[badge-license]: https://img.shields.io/badge/License-MIT-green.svg
+[license]: https://github.com/ghermeto/kafka-observable/blob/master/LICENSE
+[badge-travis]: https://api.travis-ci.org/ghermeto/kafka-observable.svg?branch=master
+[travis]: https://travis-ci.org/ghermeto/kafka-observable
+[badge-coverage]: https://codeclimate.com/github/ghermeto/kafka-observable/badges/coverage.svg
+[coverage]: https://codeclimate.com/github/ghermeto/kafka-observable/coverage
+ 
