@@ -187,7 +187,7 @@ the interface established by the code in `lib/client`.
 I currently use an internal kafka client at Netflix with an interface very similar to this adapter 
 and I wanted it to work out-of-the-box.
 
-## License: [MIT](https://github.com/ghermeto/kafka-observable/blob/master/LICENSE)
+### License: [MIT](https://github.com/ghermeto/kafka-observable/blob/master/LICENSE)
 
 [badge-license]: https://img.shields.io/badge/License-MIT-green.svg
 [license]: https://github.com/ghermeto/kafka-observable/blob/master/LICENSE

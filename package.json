@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prepublish": "npm test",
-    "test": "npm run unit-test && npm run integration-test",
+    "test": "npm run unit-test",
     "gen-docs": "node_modules/.bin/jsdoc -r README.md index.js",
     "coverage": "JASMINE_CONFIG_PATH=test/support/unit.json node_modules/.bin/istanbul cover --include-all-sources node_modules/.bin/jasmine",
     "unit-test": "JASMINE_CONFIG_PATH=test/support/unit.json node_modules/.bin/jasmine",
