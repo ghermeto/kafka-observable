@@ -11,6 +11,9 @@
     "unit-test": "JASMINE_CONFIG_PATH=test/support/unit.json node_modules/.bin/jasmine",
     "integration-test": "LOG_LEVEL=trace JASMINE_CONFIG_PATH=test/support/integration.json node_modules/.bin/jasmine"
   },
+  "engines" : {
+    "node" : ">=6.4.0"
+  },
   "keywords": [
     "kafka",
     "rx",
@@ -18,6 +21,13 @@
   ],
   "author": "gui.hermeto@gmail.com",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ghermeto/kafka-observable.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "dependencies": {
     "bunyan": "^1.8.12",
     "debug": "^3.1.0",
