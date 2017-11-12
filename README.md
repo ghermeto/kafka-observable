@@ -1,3 +1,4 @@
+[![node](https://img.shields.io/node/v/kafka-observable.svg)]()
 [![Build Status][badge-travis]][travis]
 [![Test Coverage][badge-coverage]][coverage]
 [![license][badge-license]][license]
