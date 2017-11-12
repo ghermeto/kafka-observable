@@ -85,7 +85,6 @@ consumer.subscribe(message => console.info(message));
 Below are the main options for the consumer. For more consumer options, please
 refer to [no-kafka](https://github.com/oleksiyk/kafka) options (in case you use the provided default adapter).
 
-<br>
 | Option | Required | Type | Default | Description |
 |---|---|---|---|---|
 | brokers | yes | Array/String | - | list of Kafka brokers 
@@ -132,7 +131,6 @@ producer.subscribe(message => console.info(message));
 Below are the main options for the producer. For more producer options, please
 refer to [no-kafka](https://github.com/oleksiyk/kafka) options (in case you use the provided default adapter).
 
-<br>
 | Option | Required | Type | Default | Description |
 |---|---|---|---|---|
 | brokers | yes | Array/String | - | list of Kafka brokers 
