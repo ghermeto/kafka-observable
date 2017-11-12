@@ -1,0 +1,35 @@
+{
+  "name": "kafka-observable",
+  "version": "0.0.1",
+  "description": "kafka consumer and producer as observables",
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "npm test",
+    "test": "npm run unit-test && npm run integration-test",
+    "gen-docs": "node_modules/.bin/jsdoc -r README.md index.js",
+    "coverage": "JASMINE_CONFIG_PATH=test/support/unit.json node_modules/.bin/istanbul cover --include-all-sources node_modules/.bin/jasmine",
+    "unit-test": "JASMINE_CONFIG_PATH=test/support/unit.json node_modules/.bin/jasmine",
+    "integration-test": "LOG_LEVEL=trace JASMINE_CONFIG_PATH=test/support/integration.json node_modules/.bin/jasmine"
+  },
+  "keywords": [
+    "kafka",
+    "rx",
+    "observable"
+  ],
+  "author": "gui.hermeto@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "bunyan": "^1.8.12",
+    "debug": "^3.1.0",
+    "no-kafka": "^3.2.6",
+    "rxjs": "^5.5.2",
+    "shortid": "^2.2.8"
+  },
+  "devDependencies": {
+    "dockerode": "^2.5.3",
+    "istanbul": "^0.4.5",
+    "jasmine": "^2.8.0",
+    "jsdoc": "^3.5.5",
+    "mock-require": "^2.0.2"
+  }
+}
