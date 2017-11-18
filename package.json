@@ -6,13 +6,14 @@
   "scripts": {
     "prepublish": "npm test",
     "test": "npm run unit-test",
-    "gen-docs": "node_modules/.bin/jsdoc -r README.md index.js",
+    "clean": "rm -rf ./node_modules ./out ./coverage",
+    "gen-docs": "node_modules/.bin/jsdoc -r -R README.md -P package.json index.js lib/observables/* lib/operators/*",
     "coverage": "JASMINE_CONFIG_PATH=test/support/unit.json node_modules/.bin/istanbul cover --include-all-sources node_modules/.bin/jasmine",
     "unit-test": "JASMINE_CONFIG_PATH=test/support/unit.json node_modules/.bin/jasmine",
     "integration-test": "LOG_LEVEL=trace JASMINE_CONFIG_PATH=test/support/integration.json node_modules/.bin/jasmine"
   },
-  "engines" : {
-    "node" : ">=6.4.0"
+  "engines": {
+    "node": ">=6.4.0"
   },
   "keywords": [
     "kafka",

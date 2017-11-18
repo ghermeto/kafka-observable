@@ -20,6 +20,12 @@ them, which means you can also apply filter, map or reduce.
 Many of the operations provided by observables are very similar to the capabilities available 
 in Kafka Streams, including the ability to use window (accumulate values for a period).
 
+### Installation
+
+```bash
+npm install --save kafka-observable
+```
+
 ### Example usage
 
 Imagine your customers can subscribe to out-of-stock products in your online store to 
@@ -51,7 +57,9 @@ const subscription = KafkaObservable.fromTopic('inventory_updates')
 subscription.subscribe(success => console.log(success), err => console.error(err));    
 ``` 
 
-## fromTopic(topic, options, adapterFactory = defaultAdapterFactory)
+## Methods
+
+### fromTopic(topic, options, adapterFactory = defaultAdapterFactory)
 
 Creates an observable that will consume from a Kafka topic.
 
@@ -96,7 +104,7 @@ refer to [no-kafka](https://github.com/oleksiyk/kafka) options (in case you use 
 | autoCommit | no | boolean |true | commits the message offset automatically if no exception is thrown
 | strategy | no | String | Default | name of the assignment strategy for the consumer (Default/Consistent/WeightedRoundRobin)
 
-## toTopic(topic, messages, options, adapterFactory = defaultAdapterFactory)
+### toTopic(topic, messages, options, adapterFactory = defaultAdapterFactory)
 
 Creates an observable that publishes messages to a Kafka topic.
 
@@ -140,7 +148,7 @@ refer to [no-kafka](https://github.com/oleksiyk/kafka) options (in case you use 
 | brokers | yes | Array/String | - | list of Kafka brokers 
 | partitioner | no | prototype/String | Default | name (Default/HashCRC32) or prototype (instance of Kafka.DefaultPartitioner) to use as producer partitioner
 
-## TextMessage(mapper = (x) => x)
+### TextMessage(mapper = (x) => x)
 
 Convenience operator which converts a Buffer message value into utf8 string.
 
@@ -159,7 +167,7 @@ const consumer = KafkaObservable.fromTopic('my_topic', opts)
 consumer.subscribe(message => console.info(message));
 ```
 
-## JSONMessage(mapper = (x) => x)
+### JSONMessage(mapper = (x) => x)
 
 Convenience operator provided to deserialize an object from a JSON message.
 
@@ -188,6 +196,37 @@ the interface established by the code in `lib/client`.
 I currently use an internal kafka client at Netflix with an interface very similar to this adapter 
 and I wanted it to work out-of-the-box.
 
+## Development
+
+#### Unit tests
+```bash
+npm install
+npm run unit-test
+``` 
+
+#### Integration tests
+*requires docker to be installed and accessible through the **docker** command*
+```bash
+npm install
+docker pull spotify/kafka
+npm run unit-test
+``` 
+
+#### Test coverage
+*based on unit tests*
+```bash
+npm install
+npm run coverage
+open coverage/lcov-report/index.html 
+``` 
+
+#### Documentation
+```bash
+npm install
+npm run gen-docs
+open out/index.html 
+``` 
+___
 ### License: [MIT](https://github.com/ghermeto/kafka-observable/blob/master/LICENSE)
 
 [badge-license]: https://img.shields.io/badge/License-MIT-green.svg
