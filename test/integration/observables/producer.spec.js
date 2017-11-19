@@ -23,10 +23,10 @@ describe('producer', () => {
         const producer = producerObservable.create('test_kafka', msg, opts);
 
         consumerSubscription = consumer
-            .takeUntil(Observable.interval(5000))
+            .takeUntil(Observable.interval(6000))
             .subscribe(() => {}, err => done.fail(err), () => done());
 
-        delay(4000)
+        delay(5000)
             .then(() => {
                 producerSubscription = producer
                     .subscribe(
@@ -48,7 +48,7 @@ describe('producer', () => {
             .take(2)
             .subscribe(() => {}, err => done.fail(err), () => done());
 
-        delay(4000)
+        delay(5000)
             .then(() => {
                 producerSubscription = producer
                     .subscribe(
@@ -70,7 +70,7 @@ describe('producer', () => {
             .take(3)
             .subscribe(() => {}, err => done.fail(err), () => done());
 
-        delay(4000)
+        delay(5000)
             .then(() => {
                 producerSubscription = producer
                     .subscribe(

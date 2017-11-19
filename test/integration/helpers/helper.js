@@ -54,9 +54,10 @@ beforeAll(function (done) {
     })
     .then(container => container.start())
     .then(container => global.container = container)
-    .then(() => console.info('waiting for kafka to start...') || delay(5000))
+    .then(() => console.info('waiting for kafka to start...') || delay(6000))
     .then(() => container.exec({ Cmd: createTopic() }))
     .then(exec => exec.start())
+    .then(() => delay(3000))
     .then(() => console.info(`${topic} topic created...`) || done());
 });
 
