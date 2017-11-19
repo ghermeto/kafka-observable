@@ -1,7 +1,7 @@
 'use strict';
 
 const Docker = require('dockerode');
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 12000;
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 15000;
 
 const topic = 'test_kafka';
 const createTopic = () => ([
