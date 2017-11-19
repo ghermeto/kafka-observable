@@ -1,13 +1,15 @@
 language: node_js
 sudo: false
+node_js:
+  - "6.4.0"
+  - "8.2.1"
+  - "8.9.1"
+  - "9.2.0"
 jobs:
   include:
-    - stage: test
+    - stage: test coverage
       node_js:
-        - "6.4.0"
-        - "8.2.1"
         - "8.9.1"
-        - "9.2.0"
       env:
         global:
           - CC_TEST_REPORTER_ID=d3ce1b1e6b62d8d585ece975cb481c0c3fcfdb664b95dbcb49f6cfc4c95da519
@@ -18,11 +20,11 @@ jobs:
       script: npm run coverage
       after_script:
         - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-    - stage: integration
+    - stage: integration tests
       node_js:
         - "8.9.1"
-      script: npm run integration-test
       services:
         - docker
       before_install:
         - docker pull spotify/kafka
+      script: npm run integration-test
