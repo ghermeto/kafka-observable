@@ -59,7 +59,7 @@ describe('consumer', () => {
                     err => done.fail(err)
                 );
 
-            delay(4000)
+            delay(5000)
                 .then(() => producer.publish('test_kafka', 'my message'));
         });
 
@@ -67,14 +67,14 @@ describe('consumer', () => {
             const observable = consumerObservable.create('test_kafka', options);
             subscription = observable
                 .do(m => m.commit().subscribe())
-                .takeUntil(Observable.interval(5000))
+                .takeUntil(Observable.interval(6000))
                 .reduce((acc, m) => acc + 1, 0)
                 .subscribe(number => {
                     expect(number).toBe(3);
                     done();
                 });
 
-            delay(4000)
+            delay(5000)
                 .then(() => producer.publish('test_kafka', 'first message'))
                 .then(() => producer.publish('test_kafka', 'second message'))
                 .then(() => producer.publish('test_kafka', 'third message'));
@@ -98,7 +98,7 @@ describe('consumer', () => {
                     done();
                 });
 
-            delay(4000)
+            delay(5000)
                 .then(() => producer.publish('test_kafka', 'banana'))
                 .then(() => producer.publish('test_kafka', 'avocado'))
                 .then(() => delay(500))
@@ -126,7 +126,7 @@ describe('consumer', () => {
                     err => done.fail(err)
                 );
 
-            delay(4000)
+            delay(5000)
                 .then(() => producer.publish('test_kafka', 'my message'));
         });
 
@@ -149,7 +149,7 @@ describe('consumer', () => {
                     });
                 });
 
-            delay(4000)
+            delay(5000)
                 .then(() => producer.publish('test_kafka', 'my message'));
         });
 
@@ -165,7 +165,7 @@ describe('consumer', () => {
                     done();
                 });
 
-            delay(4000)
+            delay(5000)
                 .then(() => producer.publish('test_kafka', 'banana'))
                 .then(() => producer.publish('test_kafka', 'avocado'))
                 .then(() => producer.publish('test_kafka', 'coconut'))
@@ -186,7 +186,7 @@ describe('consumer', () => {
                     error: err => done.fail(err)
                 });
 
-            delay(4000)
+            delay(5000)
                 .then(() => producer.publish('test_kafka', 'my message'))
                 .then(() => subscription.add(() => {
                     expect(adapter.commit).not.toHaveBeenCalled();
