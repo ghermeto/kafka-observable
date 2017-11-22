@@ -31,7 +31,6 @@
   },
   "dependencies": {
     "bunyan": "^1.8.12",
-    "debug": "^3.1.0",
     "no-kafka": "^3.2.6",
     "rxjs": "^5.5.2",
     "shortid": "^2.2.8"
