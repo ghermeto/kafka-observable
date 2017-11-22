@@ -11,7 +11,7 @@ const opts = {
 
 const producer = kafkaClient.producer(opts);
 
-describe('JSONMessage', () => {
+describe('JSONMessage operator', () => {
     let subscription;
 
     it('should get a message value as JSON', done => {
@@ -54,13 +54,32 @@ describe('JSONMessage', () => {
             .then(() => producer.publish('test_kafka', {key: 'test-value'}));
     });
 
+    it('should be available when called in the instance', done => {
+        const kafka = KafkaObservable(opts);
+        const observable = kafka.fromTopic('test_kafka');
+        subscription = observable
+            .take(1)
+            .let(kafka.JSONMessage())
+            .subscribe(
+                json => {
+                    expect(json.key).toBeDefined();
+                    expect(json.key).toEqual('test-value');
+                },
+                err => done.fail(err),
+                () => done()
+            );
+
+        delay(100)
+            .then(() => producer.publish('test_kafka', {key: 'test-value'}));
+    });
+
     afterEach(() => {
         subscription.unsubscribe();
     });
 
 });
 
-describe('TextMessage', () => {
+describe('TextMessage operator', () => {
     let subscription;
 
     it('should get a message value as text', done => {

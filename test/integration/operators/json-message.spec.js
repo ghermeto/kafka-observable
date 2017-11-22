@@ -33,7 +33,26 @@ describe('JSONMessage', () => {
                 () => done()
             );
 
-        delay(4000)
+        delay(5000)
+            .then(() => producer.publish('test_kafka', {key: 'test-value'}));
+    });
+
+    it('should be available when called in the instance', done => {
+        const kafka = KafkaObservable(opts);
+        const observable = kafka.fromTopic('test_kafka');
+        subscription = observable
+            .take(1)
+            .let(kafka.JSONMessage())
+            .subscribe(
+                json => {
+                    expect(json.key).toBeDefined();
+                    expect(json.key).toEqual('test-value');
+                },
+                err => done.fail(err),
+                () => done()
+            );
+
+        delay(5000)
             .then(() => producer.publish('test_kafka', {key: 'test-value'}));
     });
 

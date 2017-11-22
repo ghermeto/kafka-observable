@@ -64,7 +64,20 @@ function KafkaObservable(options, clientFactory) {
          */
         toTopic:
             (topic, messages, opts = options, client = clientFactory) =>
-                Producer.create(topic, messages, opts, client)
+                Producer.create(topic, messages, opts, client),
+
+        /**
+         * Operator: formats a message as a JSON object
+         * @function
+         * @param {Function} mapper mapping function
+         */
+        JSONMessage: jsonMessage,
+        /**
+         * Operator: formats a message as a text message
+         * @function
+         * @param {Function} mapper mapping function
+         */
+        TextMessage: kafkaMessage
     }
 }
 
